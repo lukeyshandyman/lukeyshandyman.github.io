@@ -411,6 +411,15 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
 .form-success h3{font-family:var(--font-display);font-size:1.6rem;text-transform:uppercase;margin-bottom:.5rem;}
 .form-success p{color:var(--ink-muted);margin-bottom:var(--space-2);}
 
+.form-error{
+  background:#FDECEA;border:2px solid #C0392B;border-radius:var(--radius);
+  padding:var(--space-2) var(--space-3);margin-top:var(--space-3);
+  color:#8B2E22;font-size:.9rem;
+}
+.form-error[hidden]{display:none;}
+
+.btn[disabled]{opacity:.65;cursor:not-allowed;transform:none;}
+
 .contact-info-card{
   background:var(--ink);color:var(--canvas);border-radius:var(--radius);padding:var(--space-4);
 }
@@ -873,7 +882,12 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
 
     <div class="section contact-layout">
       <div class="contact-form-wrap">
-        <form id="contactForm" novalidate>
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+          <input type="hidden" name="access_key" value="074f800a-6dbc-4740-8fe2-9d483979d980">
+          <input type="hidden" name="subject" value="New enquiry from Lukeys Handyman website">
+          <input type="hidden" name="from_name" value="Lukeys Handyman Website">
+          <!-- honeypot: real visitors never fill this in, bots often do -->
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="field-row">
             <div class="field">
               <label for="cf-name">Full name <span class="required">*</span></label>
@@ -914,7 +928,8 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
             <textarea id="cf-message" name="message" rows="5" required placeholder="Tell us a bit about the job..."></textarea>
             <p class="field-hint">The more detail, the more accurate your free quote will be.</p>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+          <button type="submit" class="btn btn-primary btn-lg" id="cfSubmitBtn">Send Message</button>
+          <p class="form-error" id="formError" role="alert" hidden></p>
         </form>
 
         <div class="form-success" id="formSuccess" hidden>
@@ -1099,10 +1114,12 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
     });
   });
 
-  /* ---------- Contact form (front-end demo, no backend) ---------- */
+  /* ---------- Contact form (submits to Web3Forms) ---------- */
   var contactForm = document.getElementById('contactForm');
   var formSuccess = document.getElementById('formSuccess');
+  var formError = document.getElementById('formError');
   var resetFormBtn = document.getElementById('resetFormBtn');
+  var submitBtn = document.getElementById('cfSubmitBtn');
 
   contactForm.addEventListener('submit', function(e){
     e.preventDefault();
@@ -1110,14 +1127,44 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
       contactForm.reportValidity();
       return;
     }
-    contactForm.hidden = true;
-    formSuccess.hidden = false;
+
+    formError.hidden = true;
+    submitBtn.disabled = true;
+    var originalLabel = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+
+    var formData = new FormData(contactForm);
+
+    fetch(contactForm.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    })
+      .then(function(response){ return response.json().then(function(data){ return {ok: response.ok, data: data}; }); })
+      .then(function(result){
+        if(result.ok && result.data.success){
+          contactForm.hidden = true;
+          formSuccess.hidden = false;
+        } else {
+          formError.textContent = "Something went wrong sending your message. Please try again, or call/email us directly using the details on the right.";
+          formError.hidden = false;
+        }
+      })
+      .catch(function(){
+        formError.textContent = "Couldn't reach the server. Check your connection and try again, or call/email us directly using the details on the right.";
+        formError.hidden = false;
+      })
+      .finally(function(){
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      });
   });
 
   resetFormBtn.addEventListener('click', function(){
     contactForm.reset();
     contactForm.hidden = false;
     formSuccess.hidden = true;
+    formError.hidden = true;
   });
 
 })();
