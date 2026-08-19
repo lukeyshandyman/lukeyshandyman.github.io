@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lukeys Handyman and Lawn Services — Coffs Harbour, NSW</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   RESET
+========================================================= */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+img,svg{display:block;max-width:100%;}
+button{font:inherit;border:none;background:none;cursor:pointer;color:inherit;}
+a{color:inherit;text-decoration:none;}
+ul,ol{list-style:none;}
+input,textarea,select{font:inherit;color:inherit;}
+
+/* =========================================================
+   DESIGN TOKENS
+========================================================= */
+:root{
+  --ink:#1E2420;
+  --ink-soft:#2C352E;
+  --ink-muted:#5B6760;
+  --turf:#2F6B33;
+  --turf-light:#6FA744;
+  --timber:#8B5E3C;
+  --timber-light:#C9A876;
+  --hivis:#F2B705;
+  --hivis-soft:#FFD65C;
+  --canvas:#FAF6EE;
+  --sawdust:#EFE4CE;
+  --paper:#FFFFFF;
+  --line:#DCD2BA;
+
+  --font-display:'Bebas Neue', sans-serif;
+  --font-mono:'Space Mono', monospace;
+  --font-body:'Work Sans', sans-serif;
+
+  --fs-xl:clamp(2.75rem, 5vw + 1.2rem, 5.25rem);
+  --fs-lg:clamp(2rem, 3vw + 1rem, 3.1rem);
+  --fs-md:clamp(1.4rem, 1.4vw + 1rem, 1.85rem);
+
+  --space-1:.5rem;
+  --space-2:1rem;
+  --space-3:1.5rem;
+  --space-4:2.25rem;
+  --space-5:3.5rem;
+  --space-6:5rem;
+
+  --radius:6px;
+  --shadow-card:0 6px 18px rgba(30,36,32,.10);
+  --shadow-lift:0 14px 30px rgba(30,36,32,.16);
+  --max:1120px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+}
+
+/* =========================================================
+   BASE
+========================================================= */
+body{
+  font-family:var(--font-body);
+  background:var(--canvas);
+  color:var(--ink);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;text-transform:none;}
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:.78rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--turf);
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  gap:.6em;
+  margin-bottom:var(--space-2);
+}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--hivis);display:inline-block;}
+
+.skip-link{
+  position:absolute;left:-999px;top:0;background:var(--hivis);color:var(--ink);
+  padding:.7rem 1.2rem;z-index:200;font-weight:700;
+}
+.skip-link:focus{left:var(--space-2);top:var(--space-2);}
+
+:focus-visible{outline:3px solid var(--hivis);outline-offset:3px;}
+
+.icon{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+.icon-fill{stroke:none;}
+
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--space-3);}
+.section{padding-block:var(--space-6);max-width:var(--max);margin-inline:auto;padding-inline:var(--space-3);}
+@media (max-width:640px){
+  .section{padding-block:var(--space-5);}
+}
+.timber-bg{background:var(--sawdust);}
+
+/* stripe / mown-lawn signature texture */
+.stripe-pattern{
+  background-image:
+    linear-gradient(rgba(20,26,22,.58), rgba(20,26,22,.72)),
+    repeating-linear-gradient(112deg, var(--turf) 0px, var(--turf) 46px, var(--turf-light) 46px, var(--turf-light) 92px);
+}
+.stripe-divider{
+  height:14px;
+  background-image:repeating-linear-gradient(112deg, var(--turf) 0px, var(--turf) 18px, var(--turf-light) 18px, var(--turf-light) 36px);
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+  padding:.9rem 1.6rem;
+  font-family:var(--font-body);font-weight:700;font-size:.85rem;
+  text-transform:uppercase;letter-spacing:.06em;
+  border-radius:3px;
+  border:2px solid transparent;
+  transition:transform .15s ease, background .2s ease, color .2s ease, border-color .2s ease;
+  white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{background:var(--hivis);color:var(--ink);}
+.btn-primary:hover{background:var(--hivis-soft);}
+.btn-lg{padding:1.1rem 2.2rem;font-size:.95rem;}
+.btn-ghost{background:transparent;border-color:var(--canvas);color:var(--canvas);}
+.btn-ghost:hover{background:rgba(250,246,238,.12);}
+.btn-secondary{background:var(--ink);color:var(--canvas);}
+.btn-secondary:hover{background:var(--ink-soft);}
+.btn-call{background:var(--hivis);color:var(--ink);padding:.65rem 1.1rem;font-size:.78rem;}
+.btn-call:hover{background:var(--hivis-soft);}
+
+/* =========================================================
+   HEADER / NAV
+========================================================= */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:var(--canvas);
+  border-bottom:1px solid var(--line);
+  transition:box-shadow .2s ease;
+}
+.site-header.is-scrolled{box-shadow:0 4px 14px rgba(30,36,32,.08);}
+.header-inner{
+  max-width:var(--max);margin-inline:auto;padding-inline:var(--space-3);
+  height:76px;display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);
+}
+.brand{display:flex;align-items:center;gap:.7rem;}
+.brand-mark{width:46px;height:46px;flex-shrink:0;}
+.logo-ring{fill:var(--ink);stroke:var(--hivis);stroke-width:2;stroke-dasharray:3.5 3;}
+.logo-letter{fill:var(--canvas);font-family:'Bebas Neue',sans-serif;}
+.brand-text{display:flex;flex-direction:column;line-height:1;}
+.brand-name{font-family:var(--font-display);font-size:1.5rem;letter-spacing:.03em;}
+.brand-sub{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted);margin-top:.2rem;}
+
+.main-nav{display:flex;gap:var(--space-4);}
+.nav-link{
+  font-weight:600;font-size:.92rem;padding:.4rem .1rem;position:relative;
+}
+.nav-link::after{
+  content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--hivis);
+  transition:width .2s ease;
+}
+.nav-link:hover::after{width:100%;}
+.nav-link[aria-current="page"]{color:var(--turf);}
+.nav-link[aria-current="page"]::after{width:100%;background:var(--turf);}
+
+.header-actions{display:flex;align-items:center;gap:var(--space-2);}
+.hamburger{display:none;width:42px;height:42px;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:3px;}
+.hamburger .icon-close{display:none;}
+.hamburger[aria-expanded="true"] .icon-menu{display:none;}
+.hamburger[aria-expanded="true"] .icon-close{display:block;}
+
+.mobile-nav{
+  display:none;flex-direction:column;background:var(--paper);border-bottom:1px solid var(--line);
+  padding:var(--space-2) var(--space-3) var(--space-3);
+}
+.mobile-nav.is-open{display:flex;}
+.mobile-nav .nav-link{padding:.9rem 0;border-bottom:1px solid var(--line);font-size:1rem;}
+.mobile-nav .btn-call{margin-top:var(--space-2);align-self:flex-start;}
+
+@media (max-width:900px){
+  .main-nav{display:none;}
+  .header-actions .btn-call span.btn-call-text{display:none;}
+  .hamburger{display:flex;}
+}
+@media (min-width:901px){
+  .mobile-nav{display:none !important;}
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+.hero{padding-block:calc(var(--space-6) + 1rem) var(--space-6);}
+.hero-inner{max-width:var(--max);margin-inline:auto;padding-inline:var(--space-3);color:var(--canvas);max-width:760px;}
+.hero .eyebrow{color:var(--hivis-soft);}
+.hero .eyebrow::before{background:var(--hivis-soft);}
+.display-xl{font-size:var(--fs-xl);text-transform:uppercase;}
+.display-lg{font-size:var(--fs-lg);text-transform:uppercase;margin-bottom:var(--space-3);}
+.hero-sub{font-size:1.1rem;max-width:46ch;margin-block:var(--space-3);opacity:.92;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-3);}
+
+/* trust strip */
+.trust-strip{
+  background:var(--ink);color:var(--canvas);
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.trust-item{
+  padding:var(--space-4) var(--space-2);text-align:center;
+  border-left:1px solid rgba(250,246,238,.14);
+}
+.trust-item:first-child{border-left:none;}
+.trust-num{display:block;font-family:var(--font-mono);font-weight:700;font-size:clamp(1.6rem,2.4vw,2.4rem);color:var(--hivis);}
+.trust-label{font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--canvas);opacity:.85;}
+@media (max-width:700px){
+  .trust-strip{grid-template-columns:repeat(2,1fr);}
+  .trust-item:nth-child(3){border-left:none;}
+}
+
+/* =========================================================
+   CARDS: service teaser / service grid / values / team
+========================================================= */
+.service-teaser-grid, .services-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-3);margin-block:var(--space-4);
+}
+.services-grid{grid-template-columns:repeat(4,1fr);}
+@media (max-width:960px){
+  .service-teaser-grid{grid-template-columns:repeat(2,1fr);}
+  .services-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:560px){
+  .service-teaser-grid, .services-grid{grid-template-columns:1fr;}
+}
+
+.card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:var(--space-3);box-shadow:var(--shadow-card);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift);}
+.card-icon{
+  width:52px;height:52px;border-radius:50%;background:var(--sawdust);
+  display:flex;align-items:center;justify-content:center;margin-bottom:var(--space-2);color:var(--turf);
+}
+.card h3{font-family:var(--font-body);font-weight:700;font-size:1.05rem;text-transform:none;margin-bottom:.4rem;line-height:1.3;}
+.card p{color:var(--ink-muted);font-size:.94rem;}
+.card-price{
+  display:inline-block;margin-top:.8rem;font-family:var(--font-mono);font-size:.78rem;
+  color:var(--turf);font-weight:700;letter-spacing:.03em;
+}
+
+.values-grid, .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3);margin-top:var(--space-4);}
+@media (max-width:800px){.values-grid, .team-grid{grid-template-columns:1fr;}}
+.value-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-3);}
+.value-num{font-family:var(--font-mono);color:var(--hivis);background:var(--ink);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;margin-bottom:var(--space-2);}
+.value-card h3{font-family:var(--font-body);font-weight:700;font-size:1.05rem;margin-bottom:.4rem;}
+.value-card p{color:var(--ink-muted);font-size:.94rem;}
+
+.team-card{text-align:center;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-4) var(--space-3);}
+.team-avatar{
+  width:76px;height:76px;border-radius:50%;background:var(--turf);color:var(--canvas);
+  display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.5rem;
+  margin-inline:auto;margin-bottom:var(--space-2);border:3px solid var(--hivis);
+}
+.team-card h3{font-family:var(--font-body);font-weight:700;font-size:1.05rem;}
+.team-role{font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;color:var(--turf);letter-spacing:.05em;margin:.3rem 0 .6rem;}
+.team-card p{color:var(--ink-muted);font-size:.9rem;}
+
+/* =========================================================
+   PAGE HERO (About / Services / Gallery / Contact)
+========================================================= */
+.page-hero{max-width:var(--max);margin-inline:auto;padding:var(--space-6) var(--space-3) var(--space-4);}
+.page-hero-sub{max-width:60ch;color:var(--ink-muted);font-size:1.05rem;margin-top:var(--space-2);}
+
+/* =========================================================
+   ABOUT PAGE
+========================================================= */
+.about-story{display:grid;grid-template-columns:1.6fr 1fr;gap:var(--space-5);align-items:center;}
+@media (max-width:800px){.about-story{grid-template-columns:1fr;}}
+.about-copy p{margin-bottom:var(--space-2);color:var(--ink-soft);}
+.about-badge-wrap{display:flex;justify-content:center;}
+
+.stamp{
+  width:168px;height:168px;border-radius:50%;
+  border:3px dashed var(--hivis);
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  transform:rotate(-8deg);background:var(--canvas);flex-shrink:0;
+}
+.stamp-text{
+  font-family:var(--font-mono);font-weight:700;font-size:.72rem;letter-spacing:.05em;
+  text-transform:uppercase;line-height:1.6;
+}
+.stamp-text small{display:block;font-weight:400;font-size:.65rem;color:var(--ink-muted);margin-top:.2rem;}
+
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3);margin-top:var(--space-4);counter-reset:step;}
+@media (max-width:800px){.steps-grid{grid-template-columns:1fr;}}
+.step-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-3);position:relative;}
+.step-num{font-family:var(--font-mono);font-weight:700;font-size:2.2rem;color:var(--turf-light);display:block;margin-bottom:.4rem;}
+.step-card h3{font-family:var(--font-body);font-weight:700;font-size:1.05rem;margin-bottom:.4rem;}
+.step-card p{color:var(--ink-muted);font-size:.94rem;}
+
+/* =========================================================
+   PRICING TABLE
+========================================================= */
+.pricing-table{width:100%;border-collapse:collapse;margin-top:var(--space-3);font-family:var(--font-mono);font-size:.92rem;}
+.pricing-table th{text-align:left;text-transform:uppercase;font-size:.72rem;letter-spacing:.06em;color:var(--ink-muted);padding-bottom:.6rem;border-bottom:2px solid var(--ink);}
+.pricing-table td{padding:.85rem 0;border-bottom:1px dashed var(--line);}
+.pricing-table td:last-child{text-align:right;color:var(--turf);font-weight:700;}
+.pricing-note{margin-top:var(--space-2);font-size:.85rem;color:var(--ink-muted);font-style:italic;}
+
+/* =========================================================
+   TESTIMONIAL / QUOTE
+========================================================= */
+.quote-section{text-align:center;}
+.big-quote{max-width:700px;margin-inline:auto;}
+.stars{display:flex;gap:.25rem;justify-content:center;margin-bottom:var(--space-2);color:var(--hivis);}
+.stars .icon{width:18px;height:18px;}
+.big-quote p{font-family:var(--font-display);font-size:clamp(1.3rem,2vw,1.9rem);text-transform:none;line-height:1.3;letter-spacing:.01em;}
+.big-quote cite{display:block;margin-top:var(--space-2);font-family:var(--font-mono);font-size:.85rem;color:var(--ink-muted);font-style:normal;}
+
+/* =========================================================
+   CTA BANNER
+========================================================= */
+.cta-banner{
+  background:var(--turf);color:var(--canvas);text-align:center;
+  padding:var(--space-6) var(--space-3);
+}
+.cta-banner .display-lg{margin-bottom:.6rem;}
+.cta-banner p{max-width:50ch;margin-inline:auto;margin-bottom:var(--space-3);opacity:.9;}
+
+/* =========================================================
+   GALLERY PAGE
+========================================================= */
+.gallery-filters{
+  display:flex;flex-wrap:wrap;gap:.6rem;max-width:var(--max);margin:0 auto var(--space-2);padding-inline:var(--space-3);
+}
+.filter-btn{
+  border:2px solid var(--ink);padding:.5rem 1.1rem;border-radius:999px;font-size:.8rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.04em;font-family:var(--font-body);transition:background .2s, color .2s;
+}
+.filter-btn:hover{background:var(--sawdust);}
+.filter-btn[aria-pressed="true"]{background:var(--ink);color:var(--canvas);}
+
+.gallery-board{background:var(--sawdust);padding-top:var(--space-4);}
+.gallery-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4) var(--space-3);
+  padding-top:var(--space-2);
+}
+@media (max-width:960px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:560px){.gallery-grid{grid-template-columns:1fr;}}
+
+.gallery-card{
+  background:var(--paper);padding:.6rem .6rem 1.1rem;box-shadow:var(--shadow-card);
+  position:relative;transition:transform .25s ease, box-shadow .25s ease;
+}
+.gallery-card:hover{transform:rotate(0deg) translateY(-6px) scale(1.02);box-shadow:var(--shadow-lift);z-index:2;}
+.gallery-card:nth-child(4n+1){transform:rotate(-2deg);}
+.gallery-card:nth-child(4n+2){transform:rotate(1.5deg);}
+.gallery-card:nth-child(4n+3){transform:rotate(-1deg);}
+.gallery-card:nth-child(4n+4){transform:rotate(2deg);}
+.gallery-card::before{
+  content:"";position:absolute;top:-9px;left:50%;transform:translateX(-50%) rotate(-3deg);
+  width:56px;height:20px;background:rgba(242,183,5,.85);
+}
+.gallery-photo{
+  aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:var(--paper);
+}
+.gallery-photo .icon{width:44px;height:44px;}
+.cat-lawns{background-image:repeating-linear-gradient(120deg, var(--turf) 0 22px, var(--turf-light) 22px 44px);}
+.cat-gardens{background:radial-gradient(circle at 30% 30%, var(--turf-light), var(--turf) 70%);}
+.cat-stump{background-image:repeating-linear-gradient(90deg, var(--timber) 0 16px, var(--timber-light) 16px 30px);}
+.cat-handyman{background-image:linear-gradient(var(--ink), var(--ink)), repeating-linear-gradient(0deg, rgba(250,246,238,.08) 0 1px, transparent 1px 24px), repeating-linear-gradient(90deg, rgba(250,246,238,.08) 0 1px, transparent 1px 24px);}
+.cat-cleaning{background:linear-gradient(135deg, var(--turf-light), #3f8a46);}
+.gallery-card figcaption{padding-top:.7rem;display:flex;flex-direction:column;gap:.15rem;}
+.gallery-title{font-weight:700;font-size:.92rem;}
+.gallery-loc{font-family:var(--font-mono);font-size:.72rem;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.04em;}
+.gallery-card[hidden]{display:none;}
+
+/* =========================================================
+   CONTACT PAGE
+========================================================= */
+.contact-layout{display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-4);align-items:start;}
+@media (max-width:860px){.contact-layout{grid-template-columns:1fr;}}
+
+.field{margin-bottom:var(--space-3);}
+.field label{display:block;font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;color:var(--ink-soft);}
+.field input, .field select, .field textarea{
+  width:100%;border:2px solid var(--line);border-radius:3px;padding:.8rem .9rem;background:var(--paper);
+  transition:border-color .2s ease;
+}
+.field input:focus, .field select:focus, .field textarea:focus{border-color:var(--turf);}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);}
+@media (max-width:560px){.field-row{grid-template-columns:1fr;}}
+.required{color:var(--turf);}
+.field-hint{font-size:.78rem;color:var(--ink-muted);margin-top:.3rem;}
+
+.form-success{
+  background:var(--paper);border:2px solid var(--turf);border-radius:var(--radius);
+  padding:var(--space-4);text-align:center;
+}
+.form-success .card-icon{margin-inline:auto;background:var(--turf);color:var(--canvas);}
+.form-success h3{font-family:var(--font-display);font-size:1.6rem;text-transform:uppercase;margin-bottom:.5rem;}
+.form-success p{color:var(--ink-muted);margin-bottom:var(--space-2);}
+
+.contact-info-card{
+  background:var(--ink);color:var(--canvas);border-radius:var(--radius);padding:var(--space-4);
+}
+.info-row{display:flex;gap:.8rem;align-items:flex-start;margin-bottom:var(--space-3);}
+.info-row .icon{color:var(--hivis);margin-top:.15rem;}
+.info-row h4{font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--hivis-soft);margin-bottom:.25rem;}
+.info-row p, .info-row a{font-size:.94rem;}
+.hours-table{width:100%;font-size:.88rem;margin-top:.2rem;}
+.hours-table td{padding:.15rem 0;}
+.hours-table td:last-child{text-align:right;font-family:var(--font-mono);}
+.area-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem;}
+.chip{
+  border:1px solid rgba(250,246,238,.3);border-radius:999px;padding:.25rem .7rem;font-size:.72rem;
+  font-family:var(--font-mono);letter-spacing:.02em;
+}
+.info-stamp{display:flex;justify-content:center;margin-top:var(--space-3);}
+.info-stamp .stamp{border-color:var(--hivis);background:transparent;color:var(--canvas);width:130px;height:130px;}
+.info-stamp .stamp-text small{color:rgba(250,246,238,.7);}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.site-footer{background:var(--ink);color:var(--canvas);padding-top:var(--space-5);}
+.footer-inner{
+  max-width:var(--max);margin-inline:auto;padding-inline:var(--space-3);
+  display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:var(--space-4);padding-bottom:var(--space-4);
+}
+@media (max-width:800px){.footer-inner{grid-template-columns:1fr 1fr;}}
+@media (max-width:480px){.footer-inner{grid-template-columns:1fr;}}
+.footer-brand{display:flex;flex-direction:column;gap:.7rem;}
+.footer-brand .brand-name{color:var(--canvas);}
+.footer-tagline{color:rgba(250,246,238,.7);font-size:.9rem;max-width:26ch;}
+.footer-col h4{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--hivis-soft);margin-bottom:var(--space-2);}
+.footer-col li{margin-bottom:.55rem;font-size:.9rem;color:rgba(250,246,238,.85);}
+.footer-col button, .footer-col a{transition:color .15s;}
+.footer-col button:hover, .footer-col a:hover{color:var(--hivis);}
+.social-row{display:flex;gap:.6rem;margin-top:var(--space-2);}
+.social-row a{width:36px;height:36px;border:1px solid rgba(250,246,238,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.social-row a:hover{border-color:var(--hivis);color:var(--hivis);}
+.footer-bottom{
+  border-top:1px solid rgba(250,246,238,.14);padding:var(--space-3);text-align:center;
+  font-size:.78rem;color:rgba(250,246,238,.6);font-family:var(--font-mono);
+}
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+.reveal.is-visible{opacity:1;transform:translateY(0);}
+
+/* page transition */
+.page{animation:fadeIn .4s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<a href="#mainContent" class="skip-link">Skip to content</a>
+
+<!-- =========================================================
+     ICON SPRITE
+========================================================= -->
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-logo" viewBox="0 0 60 60">
+    <circle class="logo-ring" cx="30" cy="30" r="27"/>
+    <text class="logo-letter" x="30" y="40" text-anchor="middle" font-size="30">L</text>
+  </symbol>
+  <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+  <symbol id="icon-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.6a11.5 11.5 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2.1 2C9.6 20.6 3.4 14.4 3 7.1A2 2 0 0 1 5 4Z"/></symbol>
+  <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m4 6.5 8 6.5 8-6.5"/></symbol>
+  <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M12 21s7-7.4 7-12.4a7 7 0 1 0-14 0C5 13.6 12 21 12 21Z"/><circle cx="12" cy="8.6" r="2.4"/></symbol>
+  <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6"/></symbol>
+  <symbol id="icon-star" viewBox="0 0 24 24"><path class="icon-fill" fill="currentColor" d="M12 3.2l2.7 5.6 6.1.6-4.6 4.2 1.3 6.1-5.5-3.1-5.5 3.1 1.3-6.1-4.6-4.2 6.1-.6Z"/></symbol>
+  <symbol id="icon-mower" viewBox="0 0 24 24"><circle cx="6.5" cy="17" r="2.4"/><circle cx="16" cy="17" r="2.4"/><path d="M6.5 17h9.5V9h-6l3 4M9 9 6 3"/></symbol>
+  <symbol id="icon-leaf" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20 14.5 9.5"/></symbol>
+  <symbol id="icon-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><path d="M8 8 20 20M8 16 20 4M8 12h1"/></symbol>
+  <symbol id="icon-fence" viewBox="0 0 24 24"><path d="M4 21V7l2-3 2 3v14M11 21V7l2-3 2 3v14M18 21V7l2-3 2 3v14"/><path d="M2 11h20M2 16h20"/></symbol>
+  <symbol id="icon-gutter" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M12 6v3.5"/><path d="M12 11.5c-2.2 2.3-3.2 3.9-3.2 5.4a3.2 3.2 0 0 0 6.4 0c0-1.5-1-3.1-3.2-5.4Z"/></symbol>
+  <symbol id="icon-spray" viewBox="0 0 24 24"><path d="M3 14h6l3-3.2V7H6L3 10.2Z"/><path d="M12.5 8.5l8.5-3M12.5 11.5l8.5 1M12.5 14.5l8 4"/></symbol>
+  <symbol id="icon-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.3 5.3L3.5 17.5l3 3 5.9-5.9a4 4 0 0 0 5.3-5.3l-2.9 2.9-2-2Z"/></symbol>
+  <symbol id="icon-bin" viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="M6 7l1 13h10l1-13"/><path d="M10 11v6M14 11v6"/></symbol>
+  <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+  <symbol id="icon-stump" viewBox="0 0 24 24"><ellipse cx="12" cy="7.5" rx="7" ry="3"/><path d="M5 7.5v3.5c0 3 3 5 7 5s7-2 7-5V7.5"/><path d="M9 16l-2 5M15 16l2 5M12 16v5"/></symbol>
+  <symbol id="icon-truck" viewBox="0 0 24 24"><path d="M2 7h11v9H2z"/><path d="M13 10h4l4 3.2V16h-8z"/><circle cx="6.5" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></symbol>
+</svg>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <button class="brand" data-nav="home" aria-label="Lukeys Handyman and Lawn Services — Home">
+      <svg class="brand-mark" viewBox="0 0 60 60"><use href="#icon-logo"/></svg>
+      <span class="brand-text">
+        <span class="brand-name">LUKEY'S</span>
+        <span class="brand-sub">Handyman &amp; Lawn Services</span>
+      </span>
+    </button>
+
+    <nav class="main-nav" id="mainNav" aria-label="Main">
+      <button class="nav-link" data-nav="home">Home</button>
+      <button class="nav-link" data-nav="about">About</button>
+      <button class="nav-link" data-nav="services">Services</button>
+      <button class="nav-link" data-nav="gallery">Gallery</button>
+      <button class="nav-link" data-nav="contact">Contact</button>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-call" href="tel:+61435373971">
+        <svg class="icon" style="width:16px;height:16px"><use href="#icon-phone"/></svg>
+        <span class="btn-call-text">0435 373 971</span>
+      </a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <svg class="icon icon-menu"><use href="#icon-menu"/></svg>
+        <svg class="icon icon-close"><use href="#icon-close"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobileNav">
+    <button class="nav-link" data-nav="home">Home</button>
+    <button class="nav-link" data-nav="about">About</button>
+    <button class="nav-link" data-nav="services">Services</button>
+    <button class="nav-link" data-nav="gallery">Gallery</button>
+    <button class="nav-link" data-nav="contact">Contact</button>
+    <a class="btn btn-primary" href="tel:+61435373971">Call 0435 373 971</a>
+  </div>
+</header>
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+<main id="mainContent">
+
+  <!-- ============ HOME ============ -->
+  <section class="page" id="page-home" data-page="home">
+    <div class="hero stripe-pattern">
+      <div class="hero-inner">
+        <p class="eyebrow">Servicing Coffs Harbour &amp; Surrounding Areas</p>
+        <h1 class="display-xl">Lawns mowed.<br>Jobs sorted.<br>No worries.</h1>
+        <p class="hero-sub">Lukeys Handyman and Lawn Services is your local Coffs Harbour crew for lawn care, garden tidy-ups and the handyman list you've been putting off. One call, one quote, one job done properly.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-lg" data-nav="contact">Get a Free Quote</button>
+          <a class="btn btn-ghost btn-lg" href="tel:+61435373971">Call Lukey Now</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="trust-strip">
+      <div class="trust-item"><span class="trust-num">100%</span><span class="trust-label">Recommended</span></div>
+      <div class="trust-item"><span class="trust-num">5★</span><span class="trust-label">Facebook reviews</span></div>
+      <div class="trust-item"><span class="trust-num">Local</span><span class="trust-label">Coffs Harbour based</span></div>
+      <div class="trust-item"><span class="trust-num">Free</span><span class="trust-label">No-obligation quotes</span></div>
+    </div>
+
+    <div class="section reveal">
+      <p class="eyebrow">What we do</p>
+      <h2 class="display-lg">Two trades, one crew.</h2>
+      <div class="service-teaser-grid">
+        <div class="card">
+          <div class="card-icon"><svg class="icon"><use href="#icon-mower"/></svg></div>
+          <h3>Lawn Mowing &amp; Edging</h3>
+          <p>Regular mows, sharp edges, and clippings cleaned up — every time.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg class="icon"><use href="#icon-leaf"/></svg></div>
+          <h3>Garden Maintenance</h3>
+          <p>Weeding, mulching, weed spraying and seasonal tidy-ups.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg class="icon"><use href="#icon-stump"/></svg></div>
+          <h3>Stump Grinding</h3>
+          <p>Old stumps ground out and cleared so you get the space back.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg class="icon"><use href="#icon-wrench"/></svg></div>
+          <h3>General Handyman</h3>
+          <p>Repairs and odd jobs around the house — the list you keep putting off.</p>
+        </div>
+      </div>
+      <button class="btn btn-secondary" data-nav="services">See all services</button>
+    </div>
+
+    <div class="section quote-section timber-bg reveal">
+      <div class="big-quote">
+        <div class="stars">
+          <svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg><svg class="icon"><use href="#icon-star"/></svg>
+        </div>
+        <p>100% Recommended</p>
+        <cite>Based on verified reviews on our Facebook page</cite>
+      </div>
+    </div>
+
+    <div class="cta-banner reveal">
+      <h2 class="display-lg">Got a job that's been sitting on your list?</h2>
+      <p>Send us a few details and we'll get back to you within one business day.</p>
+      <button class="btn btn-primary btn-lg" data-nav="contact">Get a Free Quote</button>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="page" id="page-about" data-page="about" hidden>
+    <div class="page-hero">
+      <p class="eyebrow">The story so far</p>
+      <h1 class="display-lg">Local help, straight from Lukey.</h1>
+    </div>
+
+    <div class="section about-story reveal">
+      <div class="about-copy">
+        <p>Lukeys Handyman and Lawn Services is a locally run business based in Coffs Harbour, taking care of the lawn, garden and handyman jobs that pile up around the house. From a quick mow to a stump that's been bothering you for years, it's one local crew for the whole list.</p>
+        <p>Most of the work comes in through word of mouth and Facebook — which is exactly the way we like it. Same approach every time: turn up when we say, do the job properly, and charge a fair price for it.</p>
+      </div>
+      <div class="about-badge-wrap">
+        <div class="stamp">
+          <span class="stamp-text">100%<br>Recommended<small>5 Facebook reviews</small></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section values-section timber-bg reveal">
+      <p class="eyebrow">How we work</p>
+      <h2 class="display-lg">Three rules we don't break.</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <span class="value-num">1</span>
+          <h3>Turn up when we say</h3>
+          <p>You get a time window, and we stick to it. No waiting around all day for a knock on the door.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-num">2</span>
+          <h3>Do it right the first time</h3>
+          <p>We'd rather take an extra ten minutes than come back next week to fix something.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-num">3</span>
+          <h3>Fair, upfront pricing</h3>
+          <p>You get a quote before we start, and that's what you pay. No surprises on invoice day.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section team-section reveal">
+      <p class="eyebrow">Who you're dealing with</p>
+      <h2 class="display-lg">Small, local, no call centre.</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar"><svg class="icon" style="color:var(--canvas)"><use href="#icon-phone"/></svg></div>
+          <h3>You deal with Lukey directly</h3>
+          <p class="team-role">Direct &amp; Local</p>
+          <p>Quotes, bookings and most jobs go through Lukey personally — not a call centre.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar"><svg class="icon" style="color:var(--canvas)"><use href="#icon-star"/></svg></div>
+          <h3>Backed by real reviews</h3>
+          <p class="team-role">100% Recommended</p>
+          <p>Five reviews and counting on Facebook, with new jobs going up every week.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar"><svg class="icon" style="color:var(--canvas)"><use href="#icon-pin"/></svg></div>
+          <h3>Based in Coffs Harbour</h3>
+          <p class="team-role">Coffs Coast</p>
+          <p>Servicing Coffs Harbour and the surrounding areas — home turf, not a franchise territory.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="trust-strip">
+      <div class="trust-item"><span class="trust-num">100%</span><span class="trust-label">Recommended</span></div>
+      <div class="trust-item"><span class="trust-num">5★</span><span class="trust-label">Facebook reviews</span></div>
+      <div class="trust-item"><span class="trust-num">Local</span><span class="trust-label">Coffs Harbour based</span></div>
+      <div class="trust-item"><span class="trust-num">Free</span><span class="trust-label">No-obligation quotes</span></div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="page" id="page-services" data-page="services" hidden>
+    <div class="page-hero">
+      <p class="eyebrow">What we do</p>
+      <h1 class="display-lg">Lawn care and handyman work, sorted properly.</h1>
+      <p class="page-hero-sub">From a fortnightly mow to the list of little jobs you've been meaning to get to — one crew, one call, around Coffs Harbour and the surrounding areas.</p>
+    </div>
+
+    <div class="section reveal">
+      <div class="services-grid">
+        <div class="card">
+          <div class="card-icon"><svg class="icon"><use href="#icon-mower"/></svg></div>
+          <h3>Lawn Mowing &amp; Edging</h3>
+          <p>Mowing, edging and whipper-snipping, on a one-off or regular schedule.</p>
+          <span class="card-price">From $65</span>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg class="icon"><use href="#icon-leaf"/></svg></div>
+          <h3>Garden Maintenance &amp; Weed Spraying</h3>
+          <p>Weeding, mulching, weed spraying and seasonal tidy-ups for beds and borders.</p>
+          <span class="card-price">From $150</span>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg class="icon"><use href="#icon-scissors"/></svg></div>
+          <h3>Hedge &amp; Tree Trimming</h3>
+          <p>Shaping, height reduction and green waste taken away, not left in a pile.</p>
+          <span class="card-price">From $140</span>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg class="icon"><use href="#icon-stump"/></svg></div>
+          <h3>Stump Grinding</h3>
+          <p>Old stumps ground out and cleared so the space is usable again.</p>
+          <span class="card-price">From $180</span>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg class="icon"><use href="#icon-wrench"/></svg></div>
+          <h3>General Handyman &amp; Repairs</h3>
+          <p>Shelving, flat-pack assembly, minor repairs and the rest of the list.</p>
+          <span class="card-price">From $75 / hr</span>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg class="icon"><use href="#icon-fence"/></svg></div>
+          <h3>Property Maintenance</h3>
+          <p>The ongoing stuff — fences, gutters, pressure washing and general upkeep.</p>
+          <span class="card-price">From $75 / hr</span>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg class="icon"><use href="#icon-bin"/></svg></div>
+          <h3>Rubbish Removal</h3>
+          <p>Household and garden waste, cleared and taken away same-day as the job.</p>
+          <span class="card-price">From $90</span>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg class="icon"><use href="#icon-truck"/></svg></div>
+          <h3>Scrap Metal Pick-Up</h3>
+          <p>Old appliances, sheeting and scrap collected — save on disposal costs.</p>
+          <span class="card-price">Free pick-up</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section how-it-works timber-bg reveal">
+      <p class="eyebrow">How it works</p>
+      <h2 class="display-lg">Three steps, no fuss.</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">01</span>
+          <h3>Get in touch</h3>
+          <p>Call, message or fill out the form with what's on your list.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">02</span>
+          <h3>Free, no-obligation quote</h3>
+          <p>We size up the job and give you a straight price — nothing hidden.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">03</span>
+          <h3>Job done right</h3>
+          <p>We turn up on time, do the work, and leave the place tidy.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section pricing-section reveal">
+      <p class="eyebrow">Ballpark pricing</p>
+      <h2 class="display-lg">What it usually costs.</h2>
+      <table class="pricing-table">
+        <thead>
+          <tr><th>Job</th><th>Typical price</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Lawn mowing (standard block)</td><td>From $65</td></tr>
+          <tr><td>Garden maintenance / weed spray</td><td>From $150</td></tr>
+          <tr><td>Stump grinding</td><td>From $180</td></tr>
+          <tr><td>Handyman work</td><td>From $75 / hr</td></tr>
+          <tr><td>Rubbish removal</td><td>From $90</td></tr>
+        </tbody>
+      </table>
+      <p class="pricing-note">Every job's different — these are a guide only. We'll always confirm the exact price with a free quote before we start.</p>
+    </div>
+
+    <div class="cta-banner reveal">
+      <h2 class="display-lg">Ready to get it sorted?</h2>
+      <p>Tell us what's on your list and we'll come back with a straight price.</p>
+      <button class="btn btn-primary btn-lg" data-nav="contact">Get a Free Quote</button>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="page" id="page-gallery" data-page="gallery" hidden>
+    <div class="page-hero">
+      <p class="eyebrow">Recent jobs</p>
+      <h1 class="display-lg">A few we're proud of.</h1>
+      <p class="page-hero-sub">A snapshot of recent lawns, gardens, stumps and fix-it jobs around Coffs Harbour.</p>
+    </div>
+
+    <div class="gallery-filters" role="group" aria-label="Filter gallery by category" id="galleryFilters">
+      <button class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" data-filter="lawns" aria-pressed="false">Lawns</button>
+      <button class="filter-btn" data-filter="gardens" aria-pressed="false">Gardens</button>
+      <button class="filter-btn" data-filter="stump" aria-pressed="false">Stump &amp; Tree</button>
+      <button class="filter-btn" data-filter="handyman" aria-pressed="false">Handyman</button>
+      <button class="filter-btn" data-filter="cleaning" aria-pressed="false">Cleaning</button>
+    </div>
+
+    <div class="section gallery-board">
+      <div class="gallery-grid" id="galleryGrid">
+        <figure class="gallery-card" data-category="lawns">
+          <div class="gallery-photo cat-lawns"><svg class="icon" style="color:#fff"><use href="#icon-mower"/></svg></div>
+          <figcaption><span class="gallery-title">Fortnightly Mow &amp; Edge</span><span class="gallery-loc">Sawtell</span></figcaption>
+        </figure>
+        <figure class="gallery-card" data-category="lawns">
+          <div class="gallery-photo cat-lawns"><svg class="icon" style="color:#fff"><use href="#icon-mower"/></svg></div>
+          <figcaption><span class="gallery-title">Overgrown to On-Top-Of-It</span><span class="gallery-loc">Toormina</span></figcaption>
+        </figure>
+        <figure class="gallery-card" data-category="gardens">
+          <div class="gallery-photo cat-gardens"><svg class="icon" style="color:#fff"><use href="#icon-leaf"/></svg></div>
+          <figcaption><span class="gallery-title">Garden Tidy-Up &amp; Weed Spray</span><span class="gallery-loc">Boambee</span></figcaption>
+        </figure>
+        <figure class="gallery-card" data-category="gardens">
+          <div class="gallery-photo cat-gardens"><svg class="icon" style="color:#fff"><use href="#icon-leaf"/></svg></div>
+          <figcaption><span class="gallery-title">New Mulch Beds &amp; Pruning</span><span class="gallery-loc">Korora</span></figcaption>
+        </figure>
+        <figure class="gallery-card" data-category="stump">
+          <div class="gallery-photo cat-stump"><svg class="icon" style="color:#fff"><use href="#icon-stump"/></svg></div>
+          <figcaption><span class="gallery-title">Stump Grinding</span><span class="gallery-loc">Coffs Harbour</span></figcaption>
+        </figure>
+        <figure class="gallery-card" data-category="stump">
+          <div class="gallery-photo cat-stump"><svg class="icon" style="color:#fff"><use href="#icon-scissors"/></svg></div>
+          <figcaption><span class="gallery-title">Hedge &amp; Tree Trim</span><span class="gallery-loc">Woolgoolga</span></figcaption>
+        </figure>
+        <figure class="gallery-card" data-category="handyman">
+          <div class="gallery-photo cat-handyman"><svg class="icon" style="color:#fff"><use href="#icon-wrench"/></svg></div>
+          <figcaption><span class="gallery-title">Flat-Pack Wardrobe Build</span><span class="gallery-loc">Sapphire Beach</span></figcaption>
+        </figure>
+        <figure class="gallery-card" data-category="handyman">
+          <div class="gallery-photo cat-handyman"><svg class="icon" style="color:#fff"><use href="#icon-wrench"/></svg></div>
+          <figcaption><span class="gallery-title">Shelving &amp; Picture Hanging</span><span class="gallery-loc">Moonee Beach</span></figcaption>
+        </figure>
+        <figure class="gallery-card" data-category="cleaning">
+          <div class="gallery-photo cat-cleaning"><svg class="icon" style="color:#fff"><use href="#icon-gutter"/></svg></div>
+          <figcaption><span class="gallery-title">Gutter Clean-Out</span><span class="gallery-loc">Bonville</span></figcaption>
+        </figure>
+        <figure class="gallery-card" data-category="cleaning">
+          <div class="gallery-photo cat-cleaning"><svg class="icon" style="color:#fff"><use href="#icon-truck"/></svg></div>
+          <figcaption><span class="gallery-title">Scrap Metal Pick-Up</span><span class="gallery-loc">Nana Glen</span></figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="cta-banner reveal">
+      <h2 class="display-lg">Want your place looking like this?</h2>
+      <p>Get in touch and we'll put together a free quote.</p>
+      <button class="btn btn-primary btn-lg" data-nav="contact">Get a Free Quote</button>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="page" id="page-contact" data-page="contact" hidden>
+    <div class="page-hero">
+      <p class="eyebrow">Get in touch</p>
+      <h1 class="display-lg">Let's sort your list.</h1>
+      <p class="page-hero-sub">Fill out the form or give Lukey a call — we usually reply within one business day.</p>
+    </div>
+
+    <div class="section contact-layout">
+      <div class="contact-form-wrap">
+        <form id="contactForm" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="cf-name">Full name <span class="required">*</span></label>
+              <input type="text" id="cf-name" name="name" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="cf-phone">Phone</label>
+              <input type="tel" id="cf-phone" name="phone" autocomplete="tel">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="cf-email">Email <span class="required">*</span></label>
+              <input type="email" id="cf-email" name="email" required autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="cf-suburb">Suburb</label>
+              <input type="text" id="cf-suburb" name="suburb" placeholder="e.g. Sawtell">
+            </div>
+          </div>
+          <div class="field">
+            <label for="cf-service">Service needed</label>
+            <select id="cf-service" name="service">
+              <option value="">Select a service</option>
+              <option>Lawn Mowing &amp; Edging</option>
+              <option>Garden Maintenance &amp; Weed Spraying</option>
+              <option>Hedge &amp; Tree Trimming</option>
+              <option>Stump Grinding</option>
+              <option>General Handyman &amp; Repairs</option>
+              <option>Property Maintenance</option>
+              <option>Rubbish Removal</option>
+              <option>Scrap Metal Pick-Up</option>
+              <option>Not sure / other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cf-message">What needs doing? <span class="required">*</span></label>
+            <textarea id="cf-message" name="message" rows="5" required placeholder="Tell us a bit about the job..."></textarea>
+            <p class="field-hint">The more detail, the more accurate your free quote will be.</p>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+        </form>
+
+        <div class="form-success" id="formSuccess" hidden>
+          <div class="card-icon"><svg class="icon"><use href="#icon-check"/></svg></div>
+          <h3>Message sent</h3>
+          <p>Thanks — Lukey will get back to you within one business day with a free quote.</p>
+          <button class="btn btn-secondary" id="resetFormBtn">Send another message</button>
+        </div>
+      </div>
+
+      <aside class="contact-info-card">
+        <div class="info-row">
+          <svg class="icon"><use href="#icon-phone"/></svg>
+          <div><h4>Phone</h4><a href="tel:+61435373971">0435 373 971</a></div>
+        </div>
+        <div class="info-row">
+          <svg class="icon"><use href="#icon-mail"/></svg>
+          <div><h4>Email</h4><a href="mailto:lukeyshandyman@gmail.com">lukeyshandyman@gmail.com</a></div>
+        </div>
+        <div class="info-row">
+          <svg class="icon"><use href="#icon-clock"/></svg>
+          <div>
+            <h4>Hours</h4>
+            <table class="hours-table">
+              <tr><td>Mon–Fri</td><td>7am–5pm</td></tr>
+              <tr><td>Saturday</td><td>8am–1pm</td></tr>
+              <tr><td>Sunday</td><td>Closed</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="info-row">
+          <svg class="icon"><use href="#icon-pin"/></svg>
+          <div>
+            <h4>Service area</h4>
+            <div class="area-chips">
+              <span class="chip">Coffs Harbour</span><span class="chip">Sawtell</span><span class="chip">Toormina</span>
+              <span class="chip">Boambee</span><span class="chip">Korora</span><span class="chip">Moonee Beach</span>
+              <span class="chip">Woolgoolga</span><span class="chip">Bonville</span><span class="chip">+ surrounds</span>
+            </div>
+          </div>
+        </div>
+        <div class="info-stamp">
+          <div class="stamp"><span class="stamp-text">100%<br>Recommended<small>5 Facebook reviews</small></span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-name" style="font-size:1.8rem;">LUKEY'S</span>
+      <p class="footer-tagline">Handyman &amp; lawn services for Coffs Harbour and the surrounding areas. Lawns mowed, jobs sorted, no worries.</p>
+      <div class="social-row">
+        <a href="https://www.facebook.com/people/Lukeys-handyman-and-lawn-services/61565229300680/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon" style="width:18px;height:18px"><use href="#icon-mail"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg class="icon" style="width:18px;height:18px"><use href="#icon-star"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick links</h4>
+      <ul>
+        <li><button data-nav="home">Home</button></li>
+        <li><button data-nav="about">About</button></li>
+        <li><button data-nav="services">Services</button></li>
+        <li><button data-nav="gallery">Gallery</button></li>
+        <li><button data-nav="contact">Contact</button></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Service area</h4>
+      <ul>
+        <li>Coffs Harbour &amp; Sawtell</li>
+        <li>Toormina &amp; Boambee</li>
+        <li>Korora &amp; Moonee Beach</li>
+        <li>+ surrounding areas</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+61435373971">0435 373 971</a></li>
+        <li><a href="mailto:lukeyshandyman@gmail.com">lukeyshandyman@gmail.com</a></li>
+        <li>Mon–Fri 7am–5pm</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Lukeys Handyman and Lawn Services · Coffs Harbour, NSW</div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- Page navigation ---------- */
+  var pages = document.querySelectorAll('.page');
+  var navLinks = document.querySelectorAll('.nav-link');
+  var navTriggers = document.querySelectorAll('[data-nav]');
+
+  function goToPage(pageId){
+    pages.forEach(function(p){
+      if(p.dataset.page === pageId){
+        p.hidden = false;
+      } else {
+        p.hidden = true;
+      }
+    });
+    navLinks.forEach(function(link){
+      if(link.dataset.nav === pageId){
+        link.setAttribute('aria-current','page');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+    closeMobileMenu();
+    window.scrollTo({top:0, behavior:'smooth'});
+    initReveal();
+  }
+
+  navTriggers.forEach(function(el){
+    el.addEventListener('click', function(){
+      goToPage(el.dataset.nav);
+    });
+  });
+
+  /* ---------- Mobile menu ---------- */
+  var hamburgerBtn = document.getElementById('hamburgerBtn');
+  var mobileNav = document.getElementById('mobileNav');
+
+  function closeMobileMenu(){
+    mobileNav.classList.remove('is-open');
+    hamburgerBtn.setAttribute('aria-expanded','false');
+  }
+  function toggleMobileMenu(){
+    var open = mobileNav.classList.toggle('is-open');
+    hamburgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  hamburgerBtn.addEventListener('click', toggleMobileMenu);
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeMobileMenu();
+  });
+
+  /* ---------- Header scroll shadow ---------- */
+  var header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', function(){
+    header.classList.toggle('is-scrolled', window.scrollY > 8);
+  });
+
+  /* ---------- Scroll reveal ---------- */
+  var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12});
+
+  function initReveal(){
+    document.querySelectorAll('.reveal:not(.is-visible)').forEach(function(el){
+      revealObserver.observe(el);
+    });
+  }
+  initReveal();
+
+  /* ---------- Gallery filters ---------- */
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var galleryCards = document.querySelectorAll('.gallery-card');
+
+  filterBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      filterBtns.forEach(function(b){ b.setAttribute('aria-pressed','false'); });
+      btn.setAttribute('aria-pressed','true');
+      var filter = btn.dataset.filter;
+      galleryCards.forEach(function(card){
+        card.hidden = (filter !== 'all' && card.dataset.category !== filter);
+      });
+    });
+  });
+
+  /* ---------- Contact form (front-end demo, no backend) ---------- */
+  var contactForm = document.getElementById('contactForm');
+  var formSuccess = document.getElementById('formSuccess');
+  var resetFormBtn = document.getElementById('resetFormBtn');
+
+  contactForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!contactForm.checkValidity()){
+      contactForm.reportValidity();
+      return;
+    }
+    contactForm.hidden = true;
+    formSuccess.hidden = false;
+  });
+
+  resetFormBtn.addEventListener('click', function(){
+    contactForm.reset();
+    contactForm.hidden = false;
+    formSuccess.hidden = true;
+  });
+
+})();
+</script>
+</body>
+</html>
