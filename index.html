@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lukey's Handyman and Lawn Services — Coffs Harbour, NSW</title>
+<meta name="description" content="Lukey's Handyman and Lawn Services: lawn mowing, garden maintenance, stump grinding & handyman work in Coffs Harbour and surrounds. Free, no-obligation quotes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -163,12 +164,12 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
   height:76px;display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);
 }
 .brand{display:flex;align-items:center;gap:.7rem;}
-.brand-mark{width:46px;height:46px;flex-shrink:0;}
+.brand-mark{width:46px;height:46px;flex-shrink:0;object-fit:contain;}
 .logo-ring{fill:var(--ink);stroke:var(--hivis);stroke-width:2;stroke-dasharray:3.5 3;}
 .logo-letter{fill:var(--canvas);font-family:'Bebas Neue',sans-serif;}
 .brand-text{display:flex;flex-direction:column;line-height:1;}
-.brand-name{font-family:var(--font-display);font-size:1.5rem;letter-spacing:.03em;}
-.brand-sub{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted);margin-top:.2rem;}
+.brand-name{font-family:var(--font-display);font-size:1.3rem;letter-spacing:.02em;line-height:1.1;}
+.brand-sub{font-family:var(--font-body);font-weight:600;font-size:.85rem;letter-spacing:.01em;text-transform:none;color:var(--ink-soft);margin-top:.1rem;line-height:1.1;}
 
 .main-nav{display:flex;gap:var(--space-4);}
 .nav-link{
@@ -459,7 +460,9 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
 @media (max-width:800px){.footer-inner{grid-template-columns:1fr 1fr;}}
 @media (max-width:480px){.footer-inner{grid-template-columns:1fr;}}
 .footer-brand{display:flex;flex-direction:column;gap:.7rem;}
+.footer-brand-title{display:flex;flex-direction:column;gap:.15rem;}
 .footer-brand .brand-name{color:var(--canvas);}
+.footer-brand-sub{font-family:var(--font-body);font-weight:600;font-size:.9rem;color:rgba(250,246,238,.85);}
 .footer-tagline{color:rgba(250,246,238,.7);font-size:.9rem;max-width:26ch;}
 .footer-col h4{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--hivis-soft);margin-bottom:var(--space-2);}
 .footer-col li{margin-bottom:.55rem;font-size:.9rem;color:rgba(250,246,238,.85);}
@@ -522,8 +525,8 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
 ========================================================= -->
 <header class="site-header" id="siteHeader">
   <div class="header-inner">
-    <button class="brand" data-nav="home" aria-label="Lukeys Handyman and Lawn Services — Home">
-      <svg class="brand-mark" viewBox="0 0 60 60"><use href="#icon-logo"/></svg>
+    <button class="brand" data-nav="home" aria-label="Lukey's Handyman and Lawn Services — Home">
+      <img class="brand-mark" src="lukeys-handyman-lawn-services-logo.png" alt="Lukey's Handyman and Lawn Services logo">
       <span class="brand-text">
         <span class="brand-name">Lukey's</span>
         <span class="brand-sub">Handyman &amp; Lawn Services</span>
@@ -640,7 +643,7 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
 
     <div class="section about-story reveal">
       <div class="about-copy">
-        <p>Lukeys Handyman and Lawn Services is a locally run business based in Coffs Harbour, taking care of the lawn, garden and handyman jobs that pile up around the house. From a quick mow to a stump that's been bothering you for years, it's one local crew for the whole list.</p>
+        <p>Lukey's Handyman and Lawn Services is a locally run business based in Coffs Harbour, taking care of the lawn, garden and handyman jobs that pile up around the house. From a quick mow to a stump that's been bothering you for years, it's one local crew for the whole list.</p>
         <p>Most of the work comes in through word of mouth and Facebook — which is exactly the way we like it. Same approach every time: turn up when we say, do the job properly, and charge a fair price for it.</p>
       </div>
       <div class="about-badge-wrap">
@@ -894,8 +897,8 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
       <div class="contact-form-wrap">
         <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
           <input type="hidden" name="access_key" value="074f800a-6dbc-4740-8fe2-9d483979d980">
-          <input type="hidden" name="subject" value="New enquiry from Lukeys Handyman website">
-          <input type="hidden" name="from_name" value="Lukeys Handyman Website">
+          <input type="hidden" name="subject" value="New enquiry from Lukey's Handyman website">
+          <input type="hidden" name="from_name" value="Lukey's Handyman Website">
           <!-- honeypot: real visitors never fill this in, bots often do -->
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="field-row">
@@ -996,7 +999,10 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <span class="brand-name" style="font-size:1.8rem;">LUKEY'S</span>
+      <div class="footer-brand-title">
+        <span class="brand-name" style="font-size:1.8rem;">Lukey's</span>
+        <span class="footer-brand-sub">Handyman &amp; Lawn Services</span>
+      </div>
       <p class="footer-tagline">Handyman &amp; lawn services for Coffs Harbour and the surrounding areas. Lawns mowed, jobs sorted, no worries.</p>
       <div class="social-row">
         <a href="https://www.facebook.com/people/Lukeys-handyman-and-lawn-services/61565229300680/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon" style="width:18px;height:18px"><use href="#icon-facebook"/></svg></a>
@@ -1032,7 +1038,7 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
       </ul>
     </div>
   </div>
-  <div class="footer-bottom">© 2026 Lukeys Handyman and Lawn Services · Coffs Harbour, NSW</div>
+  <div class="footer-bottom">© 2026 Lukey's Handyman &amp; Lawn Services · ABN 84 471 463 186 · Coffs Harbour, NSW</div>
 </footer>
 
 <script>
