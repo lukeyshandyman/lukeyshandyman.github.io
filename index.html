@@ -435,15 +435,8 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
   width:56px;height:20px;background:rgba(242,183,5,.85);
 }
 .gallery-photo{
-  aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:var(--paper);
-  width:100%;object-fit:cover; /* takes effect once this class is used on a real <img>; no effect on the current placeholder divs */
+  aspect-ratio:4/3;width:100%;object-fit:cover;display:block;background:var(--sawdust);
 }
-.gallery-photo .icon{width:44px;height:44px;}
-.cat-lawns{background-image:repeating-linear-gradient(120deg, var(--turf) 0 22px, var(--turf-light) 22px 44px);}
-.cat-gardens{background:radial-gradient(circle at 30% 30%, var(--turf-light), var(--turf) 70%);}
-.cat-stump{background-image:repeating-linear-gradient(90deg, var(--timber) 0 16px, var(--timber-light) 16px 30px);}
-.cat-handyman{background-image:linear-gradient(var(--ink), var(--ink)), repeating-linear-gradient(0deg, rgba(250,246,238,.08) 0 1px, transparent 1px 24px), repeating-linear-gradient(90deg, rgba(250,246,238,.08) 0 1px, transparent 1px 24px);}
-.cat-cleaning{background:linear-gradient(135deg, var(--turf-light), #3f8a46);}
 .gallery-card figcaption{padding-top:.7rem;display:flex;flex-direction:column;gap:.15rem;}
 .gallery-title{font-weight:700;font-size:.92rem;}
 .gallery-loc{font-family:var(--font-mono);font-size:.72rem;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.04em;}
@@ -502,6 +495,8 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
 .info-stamp{display:flex;justify-content:center;margin-top:var(--space-3);}
 .info-stamp .stamp{border-color:var(--hivis);background:transparent;color:var(--canvas);width:130px;height:130px;}
 .info-stamp .stamp-text small{color:rgba(250,246,238,.7);}
+.map-embed{border-radius:var(--radius);overflow:hidden;margin-top:var(--space-3);aspect-ratio:4/3;}
+.map-embed iframe{width:100%;height:100%;display:block;}
 
 /* =========================================================
    FOOTER
@@ -890,43 +885,43 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
     <div class="section gallery-board">
       <div class="gallery-grid" id="galleryGrid">
         <figure class="gallery-card" data-category="lawns">
-          <div class="gallery-photo cat-lawns"><svg class="icon" style="color:#fff"><use href="#icon-mower"/></svg></div>
-          <figcaption><span class="gallery-title">Fortnightly Mow &amp; Edge</span><span class="gallery-loc">Sawtell</span></figcaption>
+          <img class="gallery-photo" src="Acreage-mowing-coffs-harbour.jpg" alt="Freshly mowed and edged lawn in Coffs Harbour" loading="lazy">
+          <figcaption><span class="gallery-title">Acreage Mowing</span><span class="gallery-loc">Coffs Harbour</span></figcaption>
         </figure>
         <figure class="gallery-card" data-category="lawns">
-          <div class="gallery-photo cat-lawns"><svg class="icon" style="color:#fff"><use href="#icon-mower"/></svg></div>
+          <img class="gallery-photo" src="overgrown-lawn-mowing-toormina.jpg" alt="Overgrown lawn transformed after mowing in Toormina" loading="lazy">
           <figcaption><span class="gallery-title">Overgrown to On-Top-Of-It</span><span class="gallery-loc">Toormina</span></figcaption>
         </figure>
         <figure class="gallery-card" data-category="gardens">
-          <div class="gallery-photo cat-gardens"><svg class="icon" style="color:#fff"><use href="#icon-leaf"/></svg></div>
+          <img class="gallery-photo" src="garden-tidy-up-weed-spray-boambee.jpg" alt="Garden bed tidy-up and weed spraying in Boambee" loading="lazy">
           <figcaption><span class="gallery-title">Garden Tidy-Up &amp; Weed Spray</span><span class="gallery-loc">Boambee</span></figcaption>
         </figure>
         <figure class="gallery-card" data-category="gardens">
-          <div class="gallery-photo cat-gardens"><svg class="icon" style="color:#fff"><use href="#icon-leaf"/></svg></div>
+          <img class="gallery-photo" src="mulch-beds-pruning-korora.jpg" alt="Freshly mulched garden beds and pruning in Korora" loading="lazy">
           <figcaption><span class="gallery-title">New Mulch Beds &amp; Pruning</span><span class="gallery-loc">Korora</span></figcaption>
         </figure>
         <figure class="gallery-card" data-category="stump">
-          <div class="gallery-photo cat-stump"><svg class="icon" style="color:#fff"><use href="#icon-stump"/></svg></div>
+          <img class="gallery-photo" src="stump-grinding-coffs-harbour.jpg" alt="Tree stump grinding job in Coffs Harbour" loading="lazy">
           <figcaption><span class="gallery-title">Stump Grinding</span><span class="gallery-loc">Coffs Harbour</span></figcaption>
         </figure>
         <figure class="gallery-card" data-category="stump">
-          <div class="gallery-photo cat-stump"><svg class="icon" style="color:#fff"><use href="#icon-scissors"/></svg></div>
+          <img class="gallery-photo" src="hedge-tree-trim-woolgoolga.jpg" alt="Hedge and tree trimming in Woolgoolga" loading="lazy">
           <figcaption><span class="gallery-title">Hedge &amp; Tree Trim</span><span class="gallery-loc">Woolgoolga</span></figcaption>
         </figure>
         <figure class="gallery-card" data-category="handyman">
-          <div class="gallery-photo cat-handyman"><svg class="icon" style="color:#fff"><use href="#icon-wrench"/></svg></div>
+          <img class="gallery-photo" src="flat-pack-wardrobe-build-sapphire-beach.jpg" alt="Flat-pack wardrobe assembly in Sapphire Beach" loading="lazy">
           <figcaption><span class="gallery-title">Flat-Pack Wardrobe Build</span><span class="gallery-loc">Sapphire Beach</span></figcaption>
         </figure>
         <figure class="gallery-card" data-category="handyman">
-          <div class="gallery-photo cat-handyman"><svg class="icon" style="color:#fff"><use href="#icon-wrench"/></svg></div>
+          <img class="gallery-photo" src="shelving-picture-hanging-moonee-beach.jpg" alt="Shelving installation and picture hanging in Moonee Beach" loading="lazy">
           <figcaption><span class="gallery-title">Shelving &amp; Picture Hanging</span><span class="gallery-loc">Moonee Beach</span></figcaption>
         </figure>
         <figure class="gallery-card" data-category="cleaning">
-          <div class="gallery-photo cat-cleaning"><svg class="icon" style="color:#fff"><use href="#icon-gutter"/></svg></div>
+          <img class="gallery-photo" src="gutter-clean-out-bonville.jpg" alt="Gutter clean-out service in Bonville" loading="lazy">
           <figcaption><span class="gallery-title">Gutter Clean-Out</span><span class="gallery-loc">Bonville</span></figcaption>
         </figure>
         <figure class="gallery-card" data-category="cleaning">
-          <div class="gallery-photo cat-cleaning"><svg class="icon" style="color:#fff"><use href="#icon-truck"/></svg></div>
+          <img class="gallery-photo" src="scrap-metal-pickup-nana-glen.jpg" alt="Scrap metal pick-up in Nana Glen" loading="lazy">
           <figcaption><span class="gallery-title">Scrap Metal Pick-Up</span><span class="gallery-loc">Nana Glen</span></figcaption>
         </figure>
       </div>
@@ -1038,6 +1033,10 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
             </div>
           </div>
         </div>
+        <div class="map-embed">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3445.318118720441!2d153.1187511!3d-30.2850041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883b9de1dc72fa87%3A0x3df3e1fbb35b1d14!2sLukeys%20Handyman%20%26%20Lawn%20Services!5e0!3m2!1sen!2sau!4v1787230545361!5m2!1sen!2sau" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Map of Lukey's Handyman and Lawn Services area — Coffs Harbour, NSW"></iframe>
+        </div>
+
         <div class="info-stamp">
           <div class="stamp"><span class="stamp-text">100%<br>Recommended<small>5 Facebook reviews</small></span></div>
         </div>
