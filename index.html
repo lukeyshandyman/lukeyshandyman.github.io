@@ -635,7 +635,7 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
 <main id="mainContent">
 
   <!-- ============ HOME ============ -->
-  <section class="page" id="page-home" data-page="home">
+  <section class="page" id="home" data-page="home">
     <div class="hero stripe-pattern">
       <div class="hero-inner">
         <p class="eyebrow">Servicing Coffs Harbour &amp; Surrounding Areas</p>
@@ -701,7 +701,7 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
   </section>
 
   <!-- ============ ABOUT ============ -->
-  <section class="page" id="page-about" data-page="about" hidden>
+  <section class="page" id="about" data-page="about" hidden>
     <div class="page-hero">
       <p class="eyebrow">The story so far</p>
       <h1 class="display-lg">Local help, straight from Lukey.</h1>
@@ -775,7 +775,7 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
   </section>
 
   <!-- ============ SERVICES ============ -->
-  <section class="page" id="page-services" data-page="services" hidden>
+  <section class="page" id="services" data-page="services" hidden>
     <div class="page-hero">
       <p class="eyebrow">What we do</p>
       <h1 class="display-lg">Lawn care and handyman work, sorted properly.</h1>
@@ -883,7 +883,7 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
   </section>
 
   <!-- ============ GALLERY ============ -->
-  <section class="page" id="page-gallery" data-page="gallery" hidden>
+  <section class="page" id="gallery" data-page="gallery" hidden>
     <div class="page-hero">
       <p class="eyebrow">Recent jobs</p>
       <h1 class="display-lg">A few we're proud of.</h1>
@@ -952,7 +952,7 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
   </section>
 
   <!-- ============ CONTACT ============ -->
-  <section class="page" id="page-contact" data-page="contact" hidden>
+  <section class="page" id="contact" data-page="contact" hidden>
     <div class="page-hero">
       <p class="eyebrow">Get in touch</p>
       <h1 class="display-lg">Let's sort your list.</h1>
@@ -1120,7 +1120,7 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
   var navLinks = document.querySelectorAll('.nav-link');
   var navTriggers = document.querySelectorAll('[data-nav]');
 
-  function goToPage(pageId){
+  function goToPage(pageId, updateHistory){
     pages.forEach(function(p){
       if(p.dataset.page === pageId){
         p.hidden = false;
@@ -1135,6 +1135,9 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
         link.removeAttribute('aria-current');
       }
     });
+    if(updateHistory !== false){
+      history.pushState({page: pageId}, '', '#' + pageId);
+    }
     closeMobileMenu();
     window.scrollTo({top:0, behavior:'smooth'});
     initReveal();
@@ -1145,6 +1148,13 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
       goToPage(el.dataset.nav);
     });
   });
+
+  /* ---------- Deep-linking via URL fragment (#home, #about, #services, #gallery, #contact) ---------- */
+  var validPages = ['home','about','services','gallery','contact'];
+  function pageFromHash(){
+    var hash = window.location.hash.replace('#','');
+    return validPages.indexOf(hash) !== -1 ? hash : 'home';
+  }
 
   /* ---------- Mobile menu ---------- */
   var hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -1252,6 +1262,12 @@ h1,h2,h3{font-family:var(--font-display);letter-spacing:.01em;line-height:.98;te
     contactForm.hidden = false;
     formSuccess.hidden = true;
     formError.hidden = true;
+  });
+
+  /* ---------- Trigger deep-linking now that everything above is initialized ---------- */
+  goToPage(pageFromHash(), false);
+  window.addEventListener('popstate', function(){
+    goToPage(pageFromHash(), false);
   });
 
 })();
